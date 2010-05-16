@@ -1,0 +1,90 @@
+h2. Irc Bot
+
+Irc bot is built with easy extensibility in mind. Written with C#, the bot provides an platform on which to add new features and functionality easily.
+
+h2. Background
+
+Back in 2004 I started writing an irc bot. The main idea was to make the bot (which was called ClassicBot back then)  as extensible as possible so most of the work was done with the plugin support. I wanted the bot to have a plugin support which would allow to add new features and upgrade the existing ones without never having to quit the application. The bot polled a plugin-directory and if it found a .cs-file, it tried to compile the code and load the new functionalities. This worked well enough and I used it as the base when writing my Master's thesis back in 2007 about the different plugin architectures. The development of the bot stopped in 2004.
+
+In the beginning of the 2010 I dug up the code and started refactoring some parts of it. There's still many parts in the code which I would like to change to something simpler and more easily maintainable but about a half of the code has been rewritten. The bot now uses Structuremap to do all the necessary wirings and the same tool is also used to provide the plugin support. 
+
+These two articles contributed a lot to the first incarnation of the bot:
+
+http://www.codeproject.com/KB/cs/livecodedotnet.aspx
+http://www.c-sharpcorner.com/UploadFile/pasihavia/IrcBot11222005231107PM/IrcBot.aspx
+
+h2. Features
+
+*	Connects to multiple servers simultaneously
+
+*	Configuration through few XML-files
+
+*	Extensibility through plugins:
+
+**	Extend the bot even though it's running
+
+**	Add new commands
+
+**	Make it to react to different events
+
+*	Tested with IrcNet and Quakenet.
+
+h2. Architecture
+
+The irc bot works around Commands and Events.
+
+h3. Commands
+
+After the bot has joined the channel, you can command it by executing special keywords. By default, the bot knows these commands:
+
+Commands allow you to ask the bot to do something. From the configuration file you can set the used command characters. The command character is a special character which is used in front of the commands. In the examples, the character was set to '#'.
+
+h3. Events
+
+The irc bot recognizes some pre-programmed events. The developers can use these to create automatic event handlers. For example the bot recognizes when it has connected to a server and with this knowledge, it can automatically join the desired channels. 
+
+h2. For the developers
+
+The irc bot can be easily extended with new commands and event handler. Event handler is a class which automatically reacts to an event which happens to the bot (for example a user joins the bot's channel, the topic of the channel is changed and so on). Only thing required for the developer is to create the new class (or classes). The Structuremap autowires all the commands and event handlers as long as it can find them from the compiled projects.
+
+h3. Creating a new command
+
+Easiest way to extend to extended the bot is to create a new class which implements the Command-interface. Execute is the method which is run when a user executes your command by entering the pre-defined keyword. See PartChannel-class in Irc.Bot.Commands for example.
+
+h3. Creating a new event handler
+
+When creating a new event handler, you must first decide which event you like to extend. List of events (and their parameters) can be found from Irc.Events. For example, if you want the bot to do something when a user joins a channel, you should create a class which implements the IrcEventHandler<UserJoinedChannel> -interface. The interface only has one method to implement: Handle. To see an example of an event handler, see Greeter in Irc.Bot.EventHandlers.
+
+h3. Plugins
+
+You can create the new features directly into the bot's source codes or you can create an own project which hosts the new commands and event handlers. This is done by creating a new solution and a project, then referencing Irc and IrcBot dlls. After creating the new event handlers or commands, you can add them to the bot by compiling your project and copying the dll to bot's Plugins-folder (which is located under the folder from where bot is executed). Note: You can add the new dlls run-time, there's no need to stop the bot. You can also update the existing plugin dlls with new features run-time.
+
+h2. Configuration
+
+At the moment, most of the configuration is done through the XML files in Config-directory. You can set the networks and channels where the bot should automatically join when started. You can also configure the known users through these files. From IrcBot.GUI.exe.config you can set the command character for the bot. This is explained in more detail in the following chapters.
+
+You can find the configuration files under the Config-directory.
+
+h2. User interface
+
+The irc bot doesn't contain any user interface (ok, I'm exaggerating: There's one form with a Connect-button). At one point the bot had a screen which showed the bot's status, logs and more information but this was removed at some point when the code was refactored. The new user interface is in a planning stage.
+
+h2. Known issues
+
+*	You can set the bot's name in configuration files but the bot won't use it. The name is hard coded.
+
+*	There's no way to disconnect the bot from the GUI.
+
+*	The bot uses a custom version of Structuremap to load the plugins without locking them.
+
+*	There's many settings in app.config which aren't needed.
+
+h2. Future versions
+
+In the near future, I'm planning on doing much more refactoring with the code. For example the usage of xml data source is little weird and it should be replaced. Also there's many name spaces which should be sorted out. Some of them are still using the old "ClassicBot"-word and some are named "Irc". There's also just too much commented code which should be removed.
+
+The current authentication support is also a little strange and should be redesigned.
+
+I'm also hoping to add an general data source support. This could be then used from the plugins and new commands to store some information. SQLite based data source should be the easiest one to do but I'm hoping to find an solution which would allow to store the information in plain text (XML) files. XML Provider for NHibernate would be nice.
+
+Some kind of GUI should be added to the bot and I think the main executable should work as a Windows Service rather than a normal application.

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4CFB74D8-409A-448A-B097-AA92697349A0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClassicIRCBot.Tests</RootNamespace>
+    <AssemblyName>ClassicIRCBot.Tests</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.2.9222, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.5.0.1337, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Stubs\BotHandlerStub.cs" />
+    <Compile Include="BotSpecs.cs" />
+    <Compile Include="Commands\SendToServerSpecs.cs" />
+    <Compile Include="PluginWatcherSpecs.cs" />
+    <Compile Include="Stubs\PluginManagerStub.cs" />
+    <Compile Include="Stubs\SecurityLevelCheckerStub.cs" />
+    <Compile Include="Stubs\BotStub.cs" />
+    <Compile Include="Commands\HelpSpecs.cs" />
+    <Compile Include="Commands\ListCommandsSpecs.cs" />
+    <Compile Include="Commands\PartChannelSpecs.cs" />
+    <Compile Include="Commands\SayToSpecs.cs" />
+    <Compile Include="EventHandlers\PrivateMessageCreatorSpecs.cs" />
+    <Compile Include="Infrastructure\CommandExecutorSpecs.cs" />
+    <Compile Include="Infrastructure\CommandFactorySpecs.cs" />
+    <Compile Include="Infrastructure\CommandHandlerSpecs.cs" />
+    <Compile Include="Infrastructure\CommandParametersFactorySpecs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stubs\CommandStub.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Irc.Bot\Irc.Bot.csproj">
+      <Project>{C0FFA23A-CDBC-4E31-9725-2C8C0BE968B7}</Project>
+      <Name>Irc.Bot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Irc.Tests\Irc.Tests.csproj">
+      <Project>{0EB5881F-4446-484B-87D6-884E827406E1}</Project>
+      <Name>Irc.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Irc.Bot.GUI\Irc.Bot.Gui.csproj">
+      <Project>{911707E7-DA6D-49A8-8B55-D32FA51C8AB7}</Project>
+      <Name>Irc.Bot.Gui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Irc\Irc.csproj">
+      <Project>{E0ADD128-B8F8-4D59-8293-D25EA170F622}</Project>
+      <Name>Irc</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

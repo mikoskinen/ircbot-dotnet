@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<networks>
+  <network>
+    <name>IrcNet</name>
+    <network_id>1</network_id>
+    <description>IrcNet</description>
+  </network>
+  <network>
+    <name>QNet</name>
+    <network_id>2</network_id>
+    <description>QuakeNet</description>
+  </network>
+</networks>

@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<securitylevels>
+  <securitylevel>
+    <securitylevel_id>1</securitylevel_id>
+    <name>Admin</name>
+    <level>15</level>
+  </securitylevel>
+  <securitylevel>
+    <securitylevel_id>2</securitylevel_id>
+    <name>Master</name>
+    <level>10</level>
+  </securitylevel>
+  <securitylevel>
+    <securitylevel_id>3</securitylevel_id>
+    <name>Normal</name>
+    <level>5</level>
+  </securitylevel>
+  <securitylevel>
+    <securitylevel_id>4</securitylevel_id>
+    <name>Public</name>
+    <level>3</level>
+  </securitylevel>
+</securitylevels>

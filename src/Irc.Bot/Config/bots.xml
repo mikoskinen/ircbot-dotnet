@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes" ?>
+<bots>
+	<bot>
+		<name>BotNM</name>
+		<network_id>2</network_id>
+	</bot>
+	<bot>
+		<name>BotNM</name>
+		<network_id>1</network_id>
+	</bot>
+</bots>

@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<permissions>
+  <permission>
+    <channel_id>1</channel_id>
+    <user_id>1</user_id>
+    <securitylevel_id>1</securitylevel_id>
+  </permission>
+  <permission>
+    <channel_id>2</channel_id>
+    <user_id>1</user_id>
+    <securitylevel_id>1</securitylevel_id>
+  </permission>
+</permissions>

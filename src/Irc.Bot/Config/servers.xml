@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<servers>
+  <server>
+    <network_id>1</network_id>
+    <address>irc.dnainternet.net</address>
+    <description>Elisan IrcNet</description>
+    <port>6667</port>
+  </server>
+  <server>
+    <network_id>2</network_id>
+    <address>se.quakenet.org</address>
+    <description>Swedish quakenet server</description>
+    <port>6667</port>
+  </server>
+</servers>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E0ADD128-B8F8-4D59-8293-D25EA170F622}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Irc</RootNamespace>
+    <AssemblyName>Irc</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="StructureMap, Version=0.0.0.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Channel.cs" />
+    <Compile Include="Entities\IrcChannel.cs" />
+    <Compile Include="Entities\Server.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="EventHandlers\ConnectedToServerEventRiser.cs" />
+    <Compile Include="EventHandlers\ConnectionStatusChanger.cs" />
+    <Compile Include="EventHandlers\PongSender.cs" />
+    <Compile Include="Events\ChannelModeChanged.cs" />
+    <Compile Include="Infrastructure\Messages\Parsers\DetailsParser.cs" />
+    <Compile Include="Infrastructure\Messages\Modes.cs" />
+    <Compile Include="Events\TopicChanged.cs" />
+    <Compile Include="Events\UserModeChanged.cs" />
+    <Compile Include="Infrastructure\ConnectionStatus.cs" />
+    <Compile Include="Events\ConnectionStatusChanged.cs" />
+    <Compile Include="Events\ServerMessageReceived.cs" />
+    <Compile Include="Infrastructure\Connection.cs" />
+    <Compile Include="Infrastructure\Credentials.cs" />
+    <Compile Include="Infrastructure\Event.cs" />
+    <Compile Include="Infrastructure\EventAggregator.cs" />
+    <Compile Include="Infrastructure\EventFactory.cs" />
+    <Compile Include="Events\ConnectedToServer.cs" />
+    <Compile Include="Events\PingReceived.cs" />
+    <Compile Include="Events\UserJoinedChannel.cs" />
+    <Compile Include="Events\UserPartChannel.cs" />
+    <Compile Include="Infrastructure\Messages\MessageDetails.cs" />
+    <Compile Include="Infrastructure\Messages\Parsers\MessageParser.cs" />
+    <Compile Include="Infrastructure\Messages\Parsers\ModeChangeParser.cs" />
+    <Compile Include="Infrastructure\IrcEventFactory.cs" />
+    <Compile Include="Infrastructure\IrcEventHandler.cs" />
+    <Compile Include="Infrastructure\IrcMessage.cs" />
+    <Compile Include="Infrastructure\MessageParser.cs" />
+    <Compile Include="Infrastructure\IrcMessageParser.cs" />
+    <Compile Include="Infrastructure\MessageSender.cs" />
+    <Compile Include="Infrastructure\Messages\JoinMessage.cs" />
+    <Compile Include="Infrastructure\Messages\Message.cs" />
+    <Compile Include="Infrastructure\Messages\Mode.cs" />
+    <Compile Include="Infrastructure\Messages\ModeChannelMessage.cs" />
+    <Compile Include="Infrastructure\Messages\ModeUserMessage.cs" />
+    <Compile Include="Infrastructure\Messages\NoticeMessage.cs" />
+    <Compile Include="Infrastructure\Messages\PartMessage.cs" />
+    <Compile Include="Infrastructure\Messages\PrivateMessage.cs" />
+    <Compile Include="Infrastructure\Messages\QuitMessage.cs" />
+    <Compile Include="Infrastructure\Messages\TopicMessage.cs" />
+    <Compile Include="Infrastructure\PingSender.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

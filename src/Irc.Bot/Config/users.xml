@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+<users>
+  <user>
+    <user_id>1</user_id>
+    <name>Admin</name>
+    <password>5f4dcc3b5aa765d61d8327deb882cf99</password>
+    <securitylevel_id>1</securitylevel_id>
+  </user>
+</users>

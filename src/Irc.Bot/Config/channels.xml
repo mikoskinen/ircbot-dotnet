@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<channels>
+  <channel>
+    <channel_id>1</channel_id>
+    <network_id>1</network_id>
+    <name>#well6</name>
+    <password></password>
+  </channel>
+  <channel>
+    <channel_id>2</channel_id>
+    <network_id>2</network_id>
+    <name>#classic</name>
+    <password></password>
+  </channel>
+</channels>

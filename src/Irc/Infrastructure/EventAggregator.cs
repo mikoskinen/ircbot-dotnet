@@ -1,4 +1,5 @@
 using System;
+using Irc.Infrastructure;
 using StructureMap;
 
 namespace Irc
@@ -11,10 +12,12 @@ namespace Irc
     public class ContainerEventAggregator : EventAggregator
     {
         private readonly IContainer container;
+        private readonly EventDispatcher dispatcher;
 
-        public ContainerEventAggregator(IContainer container)
+        public ContainerEventAggregator(IContainer container, EventDispatcher dispatcher)
         {
             this.container = container;
+            this.dispatcher = dispatcher;
         }
 
         public void Raise<T>(T args) where T : Event
@@ -26,7 +29,8 @@ namespace Irc
 
             foreach (var handler in eventHandlers)
             {
-                InvokeHandler(args, handler);
+                //InvokeHandler(args, handler);
+                this.dispatcher.Dispatch(args, handler);
             }
         }
 
@@ -35,10 +39,10 @@ namespace Irc
             return typeof(IrcEventHandler<>).MakeGenericType(args.GetType());
         }
 
-        private void InvokeHandler<T>(T args, object handler)
-        {
-            var method = handler.GetType().GetMethod("Handle", new[] { args.GetType() });
-            method.Invoke(handler, new object[] { args });
-        }
+        //private void InvokeHandler<T>(T args, object handler)
+        //{
+        //    var method = handler.GetType().GetMethod("Handle", new[] { args.GetType() });
+        //    method.Invoke(handler, new object[] { args });
+        //}
     }
 }

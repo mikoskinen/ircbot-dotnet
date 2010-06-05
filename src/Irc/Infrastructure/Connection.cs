@@ -55,19 +55,18 @@ namespace Irc.Infrastructure
 
                 SendCredentials(credentials);
 
-                while (true)
-                {
-                    // Odotetaan viestejä
-                    while ((inputLine = reader.ReadLine()) != null)
-                    {
-                        ProcessIncomingMessage(inputLine);
-                    }
 
-                    // Suljetaan streamit
-                    writer.Close();
-                    reader.Close();
-                    irc.Close();
+                // Odotetaan viestejä
+                while ((inputLine = reader.ReadLine()) != null)
+                {
+                    ProcessIncomingMessage(inputLine);
                 }
+
+                // Suljetaan streamit
+                writer.Close();
+                reader.Close();
+                irc.Close();
+
             }
             catch (Exception e)
             {
@@ -82,7 +81,8 @@ namespace Irc.Infrastructure
             {
                 eventAggregator.Raise(happenedEvent);
             }
-            Thread.Sleep(1000);
+
+            Thread.Sleep(100);
         }
 
         private void SendCredentials(Credentials credentials)

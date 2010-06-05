@@ -58,6 +58,7 @@
     <Compile Include="EventHandlers\ConnectionStatusChanger.cs" />
     <Compile Include="EventHandlers\PongSender.cs" />
     <Compile Include="Events\ChannelModeChanged.cs" />
+    <Compile Include="Infrastructure\EventDispatcher.cs" />
     <Compile Include="Infrastructure\Messages\Parsers\DetailsParser.cs" />
     <Compile Include="Infrastructure\Messages\Modes.cs" />
     <Compile Include="Events\TopicChanged.cs" />

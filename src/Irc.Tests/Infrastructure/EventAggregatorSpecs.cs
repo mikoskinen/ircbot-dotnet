@@ -13,7 +13,7 @@ namespace Irc.Infrastructure.Specs.EventAggregatorSpecifications
 
         protected override ContainerEventAggregator CreateSubjectUnderTest()
         {
-            return new ContainerEventAggregator(container);
+            return new ContainerEventAggregator(container, new BasicEventDispatcher());
         }
     }
 

@@ -16,6 +16,7 @@ namespace IrcBot.GUI
                      });
 
             For<EventFactory>().HybridHttpOrThreadLocalScoped().Use<IrcEventFactory>();
+            For<EventDispatcher>().HybridHttpOrThreadLocalScoped().Use<BasicEventDispatcher>();
             For<EventAggregator>().HybridHttpOrThreadLocalScoped().Use<ContainerEventAggregator>();
         }
     }

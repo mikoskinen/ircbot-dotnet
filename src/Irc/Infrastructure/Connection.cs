@@ -43,6 +43,9 @@ namespace Irc.Infrastructure
             string inputLine;
             try
             {
+                var serverConnectionStarted = new ServerConnectionStarted {ServerConnection = this};
+                eventAggregator.Raise(serverConnectionStarted);
+
                 irc = new TcpClient(toServer.Address, toServer.Port);
                 stream = irc.GetStream();
                 reader = new StreamReader(stream, Encoding.Default);
@@ -54,7 +57,6 @@ namespace Irc.Infrastructure
                 ping.Start();
 
                 SendCredentials(credentials);
-
 
                 // Odotetaan viestejä
                 while ((inputLine = reader.ReadLine()) != null)
@@ -82,7 +84,7 @@ namespace Irc.Infrastructure
                 eventAggregator.Raise(happenedEvent);
             }
 
-            Thread.Sleep(100);
+            Thread.Sleep(300);
         }
 
         private void SendCredentials(Credentials credentials)
@@ -95,6 +97,9 @@ namespace Irc.Infrastructure
         {
             try
             {
+
+                var disconnectedEvent = new ServerConnectionDisconnected {Server = server};
+                eventAggregator.Raise(disconnectedEvent);
 
                 //this.SendToServer("QUIT :" + this.botQuitMessage);
                 this.SendToServer("QUIT : quit");
@@ -111,6 +116,9 @@ namespace Irc.Infrastructure
 
         public void SendToServer(string message)
         {
+            var msgSendToServerEvent = new ServerMessageSent {Message = message, Server = server, Time= DateTime.Now};
+            eventAggregator.Raise(msgSendToServerEvent);
+
             writer.WriteLine(message);
             writer.Flush();
         }

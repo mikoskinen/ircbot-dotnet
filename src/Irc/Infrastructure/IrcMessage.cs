@@ -6,7 +6,8 @@ namespace Irc
     {
         private readonly string message;
         private readonly MessageSender sender;
-        private string originalMessage;
+        private readonly string originalMessage;
+        private readonly DateTime time;
 
         public string Message
         {
@@ -28,11 +29,14 @@ namespace Irc
             }
         }
 
+
+
         public IrcMessage(MessageSender sender, string message, string originalMessage)
         {
             this.message = message;
             this.sender = sender;
             this.originalMessage = originalMessage;
+            time = DateTime.Now;
         }
 
         public static IrcMessage Empty
@@ -45,6 +49,11 @@ namespace Irc
                 return message;
 
             }
+        }
+
+        public DateTime Time
+        {
+            get { return time; }
         }
 
         #region Equals

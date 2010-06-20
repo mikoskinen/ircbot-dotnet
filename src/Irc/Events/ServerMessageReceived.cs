@@ -1,7 +1,10 @@
-﻿namespace Irc.Events
+﻿using System;
+
+namespace Irc.Events
 {
     public class ServerMessageReceived : MessageBasedEvent
     {
+        public DateTime Time;
         public string Message;
 
         public bool DoesOccurBecauseOf(string message)
@@ -11,7 +14,7 @@
 
         public MessageBasedEvent MakeFrom(string message)
         {
-            var instance = new ServerMessageReceived {Message = message};
+            var instance = new ServerMessageReceived {Message = message, Time = DateTime.Now};
 
             return instance;
         }
